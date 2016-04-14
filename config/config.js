@@ -11,8 +11,8 @@ module.exports = {
         'pass': ''
     },
     'facebook': {
-        'clientID': '1214797138550001',
-        'clientSecret': 'd86a61c54e075737c5a8f80363c35e1b',
+        'clientID': '',
+        'clientSecret': '',
         'loginCallbackURL': '/api/login-facebook-callback',
         'connectCallbackURL': '/api/connect-facebook-callback'
     }
