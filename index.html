@@ -8,9 +8,45 @@
   	<link rel="stylesheet" href="index.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   </head>
-  <body>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     
+    <!-- nav bar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#about">關於力馬</a></li>
+            <li><a href="#cups">商品</a></li>
+            <li><a href="#contact">聯絡我們</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                更多
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">活動</a></li>
+                <li><a href="#">優惠訊息</a></li>
+              </ul>
+            </li>
+            <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- nav bar -->
+
+    <!-- carousel section -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
       	<li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
@@ -55,9 +91,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <!-- carousel section -->
 
-
-  	<div class="container text-center">
+    <!-- image using grid system-->
+  	<div id="about" class="container text-center">
   	  <h3>力馬生活工坊</h3>
   	  <p><em>力馬的意涵</em></p>
   	  <p>是卑南族語「手」和數字的「五」是客家語的「笠帽」(斗笠)是族群的胼手 是團隊的牽手是我們的助手是部落的推手一起「手」護原民</p>
@@ -110,8 +147,10 @@
         </div>
       </div>
     </div>
+    <!-- image using grid system-->
 
-    <div class="bg-1">
+    <!-- thumbnail section -->
+    <div id="cups" class="bg-1">
       <div class="container">
       	<h3 class="text-center">力馬動手做</h3>
       	<p class="text-center">陶瓷體驗</p>
@@ -128,7 +167,7 @@
               <img src="images/cup1.jpg" alt="cup1" width="400" height="300">
               <p><strong>杯子一</strong></p>
               <p>2月27日, 2016</p>
-              <button class="btn">購買</button>
+              <button class="btn" data-toggle="modal" data-target="#myModal">購買</button>
             </div>
           </div>
           <div class="col-sm-4">
@@ -136,7 +175,7 @@
               <img src="images/cup2.jpg" alt="cup2" width="400" height="300">
               <p><strong>杯子二</strong></p>
               <p>3月27日, 2016</p>
-              <button class="btn">購買</button>
+              <button class="btn" data-toggle="modal" data-target="#myModal">購買</button>
             </div>
           </div>
           <div class="col-sm-4">
@@ -144,12 +183,100 @@
               <img src="images/cup3.jpg" alt="cup3" width="400" height="300">
               <p><strong>杯子三</strong></p>
               <p>4月27日, 2016</p>
-              <button class="btn">購買</button>
+              <button class="btn" data-toggle="modal" data-target="#myModal">購買</button>
             </div>
           </div>
         </div>
 
       </div>
     </div>
+    <!-- thumbnail section -->
+
+    <!-- popup modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button tyep="button" class="close" data-dismiss="modal">&times;</button>
+            <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+                <input type="number" class="form-control" id="psw" placeholder="How many?">
+              </div>
+              <div class="form-group">
+                <label for="username"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter email">
+              </div>
+              <button type="submit" class="btn btn-block">
+                Pay<span class="glyphicon glyphicon-ok"></span>
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Cancel
+            </button>
+            <p>Need <a href="#">help?</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- popup modal -->
+
+    <!-- contact section -->
+    <div id="contact" class="container">
+      <h3 class="text-center">Contact</h3>
+      <p class="text-center"><em>訂位從速！</p>
+      <div class="row test">
+        <div class="col-md-4">
+          <p>想訂位？請留下您的資訊</p>
+          <p>
+            <span class="glyphicon glyphicon-map-marker"></span>
+            苗栗縣造橋鄉大西村慈聖路二段280巷11號
+          </p>
+          <p>
+            <span class="glyphicon glyphicon-phone"></span>
+            037-542328
+          </p>
+          <p>
+            <span class="glyphicon glyphicon-envelope"></span>
+            nankuni@ms49.hinet.net
+          </p>
+        </div>
+
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+          </div>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+          <br />
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <button class="btn pull-right" type="submit">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- contact section -->
+    <footer class="text-center">
+      <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a><br><br>
+    </footer>
+
+    <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    })
+    </script>
   </body>
 </html>
