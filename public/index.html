@@ -5,10 +5,15 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="index.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="index.css">
+  	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     
@@ -267,16 +272,67 @@
       </div>
     </div>
     <!-- contact section -->
+
+    <!-- map section -->
+    <div id="googleMap"></div>
+    <!-- map section -->
+
+    <!-- footer section -->
     <footer class="text-center">
       <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a><br><br>
     </footer>
-
+    <!-- footer section -->
+    
+    <!-- script for smooth scrolling -->
     <script>
-    $(document).ready(function() {
-      $('[data-toggle="tooltip"]').tooltip();
-    })
+      $(document).ready(function() {
+        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 900, function() {
+            window.location.hash = hash;
+          });
+        });
+      });
     </script>
+    <!-- script for smooth scrolling -->
+
+    <!-- script for google map -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA7lsbZ0qQQ8iyUOd3Lmglp1wpV0OyRW8Y"></script>
+    <script>
+      var myCenter = new google.maps.LatLng(24.624470, 120.886944);
+
+      function initialize() {
+        var mapProp = {
+          center: myCenter,
+          zoom: 12,
+          scrollwheel: false,
+          draggable: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var marker = new google.maps.Marker({
+          position: myCenter
+        });
+
+        marker.setMap(map);
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+      // $(document).ready(function() {
+      //   $('[data-toggle="tooltip"]').tooltip();
+      // })
+    </script>
+    <!-- script for google map -->
+
   </body>
 </html>

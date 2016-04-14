@@ -1,20 +1,21 @@
-var http = require('http'),
-	express = require('express'),
-	socketio = require('socket.io'),
-	bodyParser = require('body-parser'),
-	methodOverride = require('method-override'),
-	expressSession = require('express-session'),
-	expressValidator = require('express-validator'),
-	mongoose = require('mongoose'),
-	passport = require('passport'),
-	config = require('./config/config'),
-	port = process.env.PORT || config.port,
-	user = require('./app/routers/user'),
-	chat = require('./app/routers/chat'),
-	chatRoomRouter = require('./app/routers/chatRoomRouter'),
-	app = express(),
-	server = http.createServer(app),
-	socketioServer = socketio.listen(server);
+var http = require('http');
+var express = require('express');
+var socketio = require('socket.io');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var expressSession = require('express-session');
+var expressValidator = require('express-validator');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var config = require('./config/config');
+var port = process.env.PORT || config.port;
+var user = require('./app/routers/user');
+var chat = require('./app/routers/chat');
+var chatRoomRouter = require('./app/routers/chatRoomRouter');
+var limaIndexRouter = require('./app/routers/limaIndexRouter');
+var app = express();
+var server = http.createServer(app);
+var socketioServer = socketio.listen(server);
 var expressValidatorOptions = require('./app/validators/custom');
 var winston = require('winston');
 var expressWinston = require('express-winston');
@@ -46,10 +47,10 @@ app.use(expressWinston.logger({
       ignoreRoute: function (req, res) { return false; } // optional: allows to skip some log messages based on request and/or response
  }));
 
-app.use('/api', user(express, require('./config/passport')(passport)));
-app.use('/api', chat(express));
-app.use(chatRoomRouter(express));
-
+// app.use('/api', user(express, require('./config/passport')(passport)));
+// app.use('/api', chat(express));
+// app.use(chatRoomRouter(express));
+app.use(limaIndexRouter(express));
 // logger for error (should be declared afoter souters middleware)
 app.use(expressWinston.errorLogger({
       transports: [
