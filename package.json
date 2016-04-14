@@ -1,0 +1,36 @@
+{
+  "name": "a",
+  "version": "1.0.0",
+  "description": "A is 1.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MarkForFutureJS/lava-money.git"
+  },
+  "author": "Mark Liu",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.5.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "express-validator": "^2.18.0",
+    "express-winston": "^1.3.0",
+    "method-override": "^2.3.5",
+    "moment": "^2.11.1",
+    "mongoose": "^4.3.4",
+    "mongoose-unique-validator": "^0.6.2",
+    "nodemailer": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "request": "^2.67.0",
+    "socket.io": "^1.4.4",
+    "validator": "^4.4.0"
+  }
+}
