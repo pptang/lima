@@ -12,10 +12,9 @@
   	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   </head>
-  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body  id="myPage" ng-app="limaApp" data-spy="scroll" data-target=".navbar" data-offset="50">
     
     <!-- nav bar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -62,7 +61,7 @@
       <div class="carousel-inner" role="listbox">
 
         <div class="item active">
-          <img src="images/place.jpg" alt="place" width="1000" height="500">
+          <img src="images/food.jpg" alt="place" width="1000" height="500">
           <div class="carousel-caption">
           	<h3>餐廳</h3>
           	<p>原住民風的擺設</p>
@@ -78,7 +77,7 @@
         </div>
 
         <div class="item">
-          <img src="images/china.jpg" alt="china" width="1000" height="500">
+          <img src="images/food.jpg" alt="china" width="1000" height="500">
           <div class="carousel-caption">
           	<h3>手工瓷器</h3>
           	<p>南先生自己設計的圖案</p>
@@ -99,8 +98,8 @@
     <!-- carousel section -->
 
     <!-- image using grid system-->
-  	<div id="about" class="container text-center">
-  	  <h3>力馬生活工坊</h3>
+  	<div id="about" class="container text-center" ng-controller="mainCtrl">
+  	  <h3>{{limaTitle}}</h3>
   	  <p><em>力馬的意涵</em></p>
   	  <p>是卑南族語「手」和數字的「五」是客家語的「笠帽」(斗笠)是族群的胼手 是團隊的牽手是我們的助手是部落的推手一起「手」護原民</p>
       <br>
@@ -232,8 +231,8 @@
     <!-- popup modal -->
 
     <!-- contact section -->
-    <div id="contact" class="container">
-      <h3 class="text-center">Contact</h3>
+    <div id="contact" class="container" ng-controller="reservCtrl">
+      <h3 class="text-center">聯絡方式</h3>
       <p class="text-center"><em>訂位從速！</p>
       <div class="row test">
         <div class="col-md-4">
@@ -255,17 +254,30 @@
         <div class="col-md-8">
           <div class="row">
             <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+              <input class="form-control" ng-model="reservation.customerName" placeholder="姓名" type="text" required>
             </div>
             <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+              <input class="form-control" ng-model="reservation.email" placeholder="Email" type="email" required>
             </div>
           </div>
-          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" ng-model="reservation.date" placeholder="日期" type="text" required>
+            </div>
+            <div class="col-sm-4 form-group">
+              <input class="form-control" ng-model="reservation.tel"placeholder="聯絡電話" type="tel" required>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input class="form-control" ng-model="reservation.numOfGuests" placeholder="人數" type="tel" required>
+            </div>
+          </div>
+          
+          <textarea class="form-control" id="comments" name="comments" placeholder="其他特殊需求" rows="5"></textarea>
           <br />
           <div class="row">
             <div class="col-md-12 form-group">
-              <button class="btn pull-right" type="submit">Send</button>
+              <button class="btn pull-right" type="button" ng-click="createReservation()">Send</button>
+              <p>{{reservationResult}}</p>
             </div>
           </div>
         </div>
@@ -305,6 +317,9 @@
 
     <!-- script for google map -->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA7lsbZ0qQQ8iyUOd3Lmglp1wpV0OyRW8Y"></script>
+    <script src="js/controllers/MainController.js"></script>
+    <script src="js/app.js"></script>
+
     <script>
       var myCenter = new google.maps.LatLng(24.624470, 120.886944);
 
